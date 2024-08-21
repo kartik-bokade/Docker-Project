@@ -10,15 +10,13 @@ pipeline {
         }
         stage ('Building a docker image') {
             steps {
-                sh 'docker build -t spring-app:v1.1 .'
-                sh 'docker images'
+                sh 'docker build -t spring-app:v1.01 .'
             }
         }
         stage ('Push Docker image to DockerHub') {
             steps {
-                sh 'docker tag spring-app:v1.1 kartikbokade/spring-app:v1.1'
-                sh 'docker push kartikbokade/spring-app:v1.1'
-                sh 'docker images'
+                sh 'docker tag spring-app:v1.01 kartikbokade/spring-app:v1.01'
+                sh 'docker push kartikbokade/spring-app:v1.01'
             }
         }
         stage ('Remove docker images from Jenkins server') {
