@@ -10,7 +10,7 @@ pipeline {
         }
         stage ('Building a docker image') {
             steps {
-                sh 'docker build -t kartikbokade/spring:v1.1 .'
+                sh 'docker build -t kartikbokade/spring:v1.2 .'
                 sh 'docker images'
             }
         }
