@@ -10,7 +10,7 @@ pipeline {
         }
         stage ('Building a docker image') {
             steps {
-                sh 'docker build -t spring-app:v1.01'
+                sh 'docker build -t spring-app:v1.01 .'
             }
         }
         stage ('Push Docker image to DockerHub') {
