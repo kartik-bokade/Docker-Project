@@ -19,12 +19,11 @@ pipeline {
                 sh 'docker push kartikbokade/spring-app:v1.02'
             }
         }
-        stage ('Deploy the application on Jenkins') {
+        stage ('Send artifact to nexus repository') {
             steps {
-                sh 'docker run -d -p 80:80 --name=spring-container spring-app:v1.02'
-                sh 'sleep 10'
-                sh 'docker ps'
-                sh 'docker stop spring-container && docker rm spring-container'
+                sh 'curl -v -u admin:admin \
+    --upload-file ./target/spring-petclinic-2.7.0-SNAPSHOT.jar \
+    http://34.229.14.29:8080/repository/spring-snapshot/org/springframework/samples/spring-petclinic-2.7.0-SNAPSHOT.jar'
             }
         }
         stage ('Deploy application on jenkins server') {
