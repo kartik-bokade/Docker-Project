@@ -26,9 +26,9 @@ pipeline {
                 sh 'docker ps'
             }
         }
-        stage ('Remove docker images from Jenkins server') {
+        stage ('Deploy application on jenkins server') {
             steps {
-                sh 'docker images && docker rmi kartikbokade/spring-app:v1.02'
+                sh 'java -jar target/spring-petclinic-2.7.0-SNAPSHOT.jar'
             }
         }
     }
