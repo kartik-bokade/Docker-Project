@@ -23,7 +23,7 @@ pipeline {
         }
         stage ('Remove docker images from Jenkins server') {
             steps {
-                sh 'docker images && docker rmi kartikbokade/spring-app:v1.01'
+                sh 'docker images && docker rmi kartikbokade/spring-app:v1.1'
             }
         }
     }
