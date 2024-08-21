@@ -21,9 +21,10 @@ pipeline {
         }
         stage ('Deploy the application on Jenkins') {
             steps {
-                sh 'docker run -d -p 80:8080 --name=spring-container spring-app:v1.02'
+                sh 'docker run -d -p 80:80 --name=spring-container spring-app:v1.02'
                 sh 'sleep 10'
                 sh 'docker ps'
+                sh 'docker stop spring-container && docker rm spring-container'
             }
         }
         stage ('Deploy application on jenkins server') {
