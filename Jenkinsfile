@@ -10,13 +10,13 @@ pipeline {
         }
         stage ('Building a docker image') {
             steps {
-                sh 'docker build -t spring-app:v1.02 .'
+                sh 'docker build -t spring-app:v1.03 .'
             }
         }
         stage ('Push Docker image to DockerHub') {
             steps {
-                sh 'docker tag spring-app:v1.02 kartikbokade/spring-app:v1.02'
-                sh 'docker push kartikbokade/spring-app:v1.02'
+                sh 'docker tag spring-app:v1.03 kartikbokade/spring-app:v1.03'
+                sh 'docker push kartikbokade/spring-app:v1.03'
             }
         }
         stage ('Send artifact to nexus repository') {
@@ -26,7 +26,7 @@ pipeline {
         }
         stage ('Deploy application on jenkins server') {
             steps {
-                sh 'java -jar target/spring-petclinic-2.7.0-SNAPSHOT.jar'
+                sh 'nohup java -jar target/spring-petclinic-2.7.0-SNAPSHOT.jar > output.log 2>&1 &'
             }
         }
     }
