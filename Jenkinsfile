@@ -24,10 +24,10 @@ pipeline {
                 sh 'mvn deploy'
             }
         }
-        stage ('Deploy application on jenkins server') {
-            steps {
-                sh 'nohup java -jar target/spring-petclinic-2.7.0-SNAPSHOT.jar > output.log 2>&1 &'
-            }
-        }
+        // stage ('Deploy application on jenkins server') {
+        //     steps {
+        //         sh 'nohup java -jar target/spring-petclinic-2.7.0-SNAPSHOT.jar > output.log 2>&1 &'
+        //     }
+        // }
     }
 }
